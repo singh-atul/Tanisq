@@ -8,3 +8,18 @@ exports.userResponse = (user) => {
     }
 }
 
+
+exports.productResponse = (products) => {
+
+    productResult = [];
+    products.forEach(product => {
+        productResult.push({
+            name: product.name,
+            img: product.img,
+            category: product.category,
+            id:product._id
+        });
+    });
+    return productResult;
+
+}

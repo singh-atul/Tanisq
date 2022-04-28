@@ -9,6 +9,8 @@ module.exports = function (app) {
     app.get('/tanishq/api/v1/product', productController.getProducts)
     //Update a product
     app.put('/tanishq/api/v1/editproduct/:productId',[authJwt.verifyToken], productController.updateProduct)
+    //Remove a product
+    app.delete('/tanishq/api/v1/deleteproduct/:productId',[authJwt.verifyToken], productController.removeProduct)
 
 }
 

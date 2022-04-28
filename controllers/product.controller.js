@@ -26,3 +26,20 @@ exports.getProducts = async (req, res) =>  {
         return res.status(200).send(objectConvertor.productResponse(products));
     }
 }
+
+exports.updateProduct = async (req, res) =>  {
+    console.log(req.params)
+    const product = await Product.findOne({ _id: req.params.productId });
+    console.log(product);
+    product.name = req.body.name;
+    product.img = req.body.img;
+    product.category = req.body.category;
+    product.description = req.body.description;
+    try{
+        await product.save();
+        res.status(200).send(product);
+    }
+    catch(err){
+        res.status(500).send({message:"Internal Server error"});
+    }
+}
